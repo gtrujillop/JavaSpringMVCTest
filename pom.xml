@@ -50,6 +50,12 @@
                 <artifactId>hibernate-entitymanager</artifactId>
                 <version>${hibernate.version}</version>
             </dependency>
+            <!-- Postgres -->
+            <dependency>
+                 <groupId>postgresql</groupId>
+                 <artifactId>postgresql</artifactId>
+                 <version>9.0-801.jdbc4</version>
+            </dependency>
 
             <!-- Apache Commons DBCP -->
             <dependency>
@@ -188,15 +194,14 @@
 			</plugin>
 
 			<!-- Ensures we are compiling at 1.6 level -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
-				</configuration>
-			</plugin>
+			 <plugin>
+                            <artifactId>maven-compiler-plugin</artifactId>
+                            <version>3.0</version>
+                            <configuration>
+                                <source>1.7</source>
+                                <target>1.7</target>
+                            </configuration>
+                        </plugin>
 
 			<!-- Tomcat plugin for embedded tomcat -->
 			<plugin>

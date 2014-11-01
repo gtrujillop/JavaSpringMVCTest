@@ -13,12 +13,12 @@
     </style>
 </head>
 <body>
-<h1>
+<h3>
     Add a User
-</h1>
+</h3>
  
-<c:url var="addAction" value="/person/add" ></c:url>
- 
+<c:url var="addAction" value="/create" ></c:url>
+    
 <form:form action="${homeController.addUser(user)}" commandName="user">
 <table>
     <c:if test="${!empty user.name}">
@@ -34,26 +34,7 @@
         </td>
     </tr>
     </c:if>
-    <tr>
-        <td>
-            <form:label path="name">
-                <spring:message text="Name"/>
-            </form:label>
-        </td>
-        <td>
-            <form:input path="name" />
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <form:label path="country">
-                <spring:message text="Country"/>
-            </form:label>
-        </td>
-        <td>
-            <form:input path="country" />
-        </td>
-    </tr>
+    
     <tr>
         <td colspan="2">
             <c:if test="${!empty user.firstname}">
@@ -70,21 +51,30 @@
 </form:form>
 <br>
 <h3>List Users</h3>
-<c:if test="${!empty listUsers}">
+<c:if test="${!empty homeController.users}">
     <table class="tg">
     <tr>
         <th width="80">User DNI</th>
         <th width="120">First Name</th>
         <th width="120">Last Name</th>
+        <th width="120">Birth Date</th>
+        <th width="120">Email</th>
+        <th width="120">Phone</th>
+        
         <th width="60">Edit</th>
         <th width="60">Delete</th>
     </tr>
-    <c:forEach items="${listUsers}" var="person">
+    <c:forEach items="${homeController.users}" var="user">
         <tr>
+            <td>${user.id}</td>
             <td>${user.dni}</td>
             <td>${user.first_name}</td>
             <td>${user.last_name}</td>
-            <td><a href="<c:url value='/edit/${person.id}' />" >Edit</a></td>
+            <td>${user.birthdate}</td>
+            <td>${user.email}</td>
+
+
+            <td><a href="<c:url value='/update/${user.id}' />" >Edit</a></td>
             <td><a href="<c:url value='/delete/${user.id}' />" >Delete</a></td>
         </tr>
     </c:forEach>

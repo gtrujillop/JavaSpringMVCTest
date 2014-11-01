@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
@@ -23,6 +25,7 @@ public class User implements Serializable{
     
     @Id
     @Column(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Integer id;
     @Column(name = "user_dni",unique = true, nullable = false)
     private String dni;

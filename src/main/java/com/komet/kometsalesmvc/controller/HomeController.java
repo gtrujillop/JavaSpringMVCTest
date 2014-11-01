@@ -91,4 +91,16 @@ public class HomeController {
     }  
  }
  
+ /* Update an object from DB in Spring Restful Services */  
+ @RequestMapping(value = "update/{id}", method = RequestMethod.GET)  
+ public @ResponseBody  
+ Status updateUser(@PathVariable("user") User user) {  
+     try {  
+     dataServices.updateUser(user);
+     return new Status(1, "User Updated Successfully !");  
+    } catch (Exception e) {  
+     return new Status(0, e.toString());  
+    }  
+ }
+ 
 }  
