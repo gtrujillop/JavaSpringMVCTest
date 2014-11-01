@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head><title>Komet Sales Tech Test App</title></h:head>
+    <h:body>
+        <h:form>
+            <table>
+                <tr>
+                    <td><h:outputLabel for="user_dni" value="DNI : " /></td>
+                    <td><p:inputText id="dni" value="#{userMB.dni}">
+                            <p:ajax event="blur" update="idMsg" />
+                        </p:inputText>
+                        <p:message id="idMsg" for="dni" display="icon"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel for="user_name" value="First Name : " /></td>
+                    <td><p:inputText id="first_name" value="#{userMB.firstname}">
+                            <f:validateLength minimum="5" />
+                            <p:ajax event="blur" update="nameMsg" />
+                        </p:inputText>
+                        <p:message id="nameMsg" for="first_name" display="icon"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel for="user_last_name" value="Last Name : " /></td>
+                    <td><p:inputText id="last_name" value="#{userMB.lastname}">
+                            <f:validateLength minimum="5" />
+                            <p:ajax event="blur" update="lastNMsg" />
+                        </p:inputText>
+                        <p:message id="lastNMsg" for="last_name" display="icon"/>
+                    </td>
+                </tr>
+                 <tr>
+                    <td><h:outputLabel for="user_birthdate" value="Birth Date : " /></td>
+                    <td><p:inputText id="last_name" value="#{userMB.birthdate}">
+                            <f:validateLength minimum="5" />
+                            <p:ajax event="blur" update="dateMsg" />
+                        </p:inputText>
+                        <p:message id="dateMsg" for="user_birthdate" display="icon"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><p:commandButton id="addUser" value="Add" action="#{userMB.addUser}" ajax="false"/></td>
+                    <td><p:commandButton id="reset" value="Reset" action="#{userMb.reset}" ajax="false"/></td>
+                </tr>
+            </table>
+        </h:form>
+        <br />
+        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+    </h:body>
+</html>
